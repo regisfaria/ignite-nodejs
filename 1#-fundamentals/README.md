@@ -20,8 +20,3 @@ yarn dev
 ```
 
 server will be listening to port 3333
-
-## Contact
-Email: regisprogramming@gmail.com
-
-[LinkedIn](https://www.linkedin.com/in/regissfaria/), [GitHub](https://github.com/regisfaria) and [GitLab](https://gitlab.com/regisfaria) profiles
