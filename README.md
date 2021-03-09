@@ -3,7 +3,7 @@
 ## Overview
 I will update along more content is being pushed
 
-# [] make a summary
+- [ ] make a summary
 
 ## Contact
 Email: regisprogramming@gmail.com
