@@ -9,7 +9,7 @@
         "<node_internals>/**"
       ],
       "outFiles": [
-        "${workspaceFolder}/**/*.js"
+        "${workspaceFolder}/**/*.ts"
       ]
     }
   ]
