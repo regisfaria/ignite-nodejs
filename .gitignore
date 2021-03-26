@@ -2,4 +2,4 @@
 **/.env/**
 **/.DS_Store/**
 .DS_Store
-**/ormconfig.json/**
+modules/4#-rentx-api/ormconfig.json
