@@ -5,8 +5,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity('specifications')
-class Specification {
+@Entity('users')
+class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -14,10 +14,19 @@ class Specification {
   name: string;
 
   @Column()
-  description: string;
+  password: string;
+
+  @Column()
+  driver_license: string;
+
+  @Column()
+  email: string;
+
+  @Column('bool')
+  admin: boolean;
 
   @CreateDateColumn()
   created_at: Date;
 }
 
-export { Specification };
+export { User };
