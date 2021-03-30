@@ -1,16 +1,23 @@
-import { v4 as uuid } from 'uuid';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
+@Entity('categories')
 class Specification {
-  id?: string;
-  name: string;
-  description: string;
-  created_at: Date;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-  constructor() {
-    if (!this.id) {
-      this.id = uuid();
-    }
-  }
+  @Column()
+  name: string;
+
+  @Column()
+  description: string;
+
+  @CreateDateColumn()
+  created_at: Date;
 }
 
 export { Specification };
