@@ -3,3 +3,6 @@
 **/.DS_Store/**
 .DS_Store
 modules/4#-rentx-api/ormconfig.json
+modules/4#-rentx-api/tmp/avatars/*.png
+modules/4#-rentx-api/tmp/avatars/*.jpg
+modules/4#-rentx-api/tmp/avatars/*.jpeg
