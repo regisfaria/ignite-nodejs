@@ -1,4 +1,4 @@
-import { AppError } from '@errors/AppError';
+import { AppError } from '@shared/errors/AppError';
 
 import { FakeCategoriesRepository } from '../../repositories/fakes/FakeCategoriesRepository';
 import { CreateCategoryUseCase } from './CreateCategoryUseCase';

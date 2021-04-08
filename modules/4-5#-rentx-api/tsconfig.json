@@ -7,10 +7,7 @@
     "paths": {
       "@modules/*": ["modules/*"],
       "@config/*": ["config/*"],
-      "@shared/*": ["shared/*"],
-      "@middlewares/*": ["middlewares/*"],
-      "@errors/*": ["errors/*"],
-      "@utils/*": ["utils/*"]
+      "@shared/*": ["shared/*"]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,
