@@ -1,0 +1,35 @@
+import { v4 as uuid } from 'uuid';
+
+import { ICreateUserDTO } from '../../dtos/ICreateUserDTO';
+import { User } from '../../entities/User';
+import { IUsersRepository } from '../IUsersRepository';
+
+class FakeUsersRepository implements IUsersRepository {
+  users: User[] = [];
+
+  async create(data: ICreateUserDTO): Promise<void> {
+    const user = new User();
+
+    Object.assign(user, { id: uuid(), ...data });
+
+    this.users.push(user);
+  }
+
+  async update(user: User): Promise<void> {
+    const userIndex = this.users.findIndex(
+      userToFind => userToFind.id === user.id,
+    );
+
+    this.users[userIndex] = user;
+  }
+
+  async findByEmail(email: string): Promise<User> {
+    return this.users.find(user => user.email === email);
+  }
+
+  async findById(id: string): Promise<User> {
+    return this.users.find(user => user.id === id);
+  }
+}
+
+export { FakeUsersRepository };
