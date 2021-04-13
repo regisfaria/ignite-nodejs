@@ -1,14 +1,24 @@
 import { v4 as uuid } from 'uuid';
 
 import { ICreateCategoryDTO } from '../../dtos/ICreateCategoryDTO';
-import { Category } from '../../entities/Category';
+import { Category } from '../../infra/typeorm/entities/Category';
 import { ICategoriesRepository } from '../ICategoriesRepository';
 
 class FakeCategoriesRepository implements ICategoriesRepository {
   categories: Category[] = [];
 
   async findByName(name: string): Promise<Category> {
-    const category = this.categories.find(category => category.name === name);
+    const category = this.categories.find(
+      categoryToFind => categoryToFind.name === name,
+    );
+
+    return category;
+  }
+
+  async findById(id: string): Promise<Category> {
+    const category = this.categories.find(
+      categoryToFind => categoryToFind.id === id,
+    );
 
     return category;
   }
@@ -19,7 +29,7 @@ class FakeCategoriesRepository implements ICategoriesRepository {
     return all;
   }
 
-  async create({ name, description }: ICreateCategoryDTO): Promise<void> {
+  async create({ name, description }: ICreateCategoryDTO): Promise<Category> {
     const category = new Category();
 
     Object.assign(category, {
@@ -30,6 +40,8 @@ class FakeCategoriesRepository implements ICategoriesRepository {
     });
 
     this.categories.push(category);
+
+    return category;
   }
 }
 
