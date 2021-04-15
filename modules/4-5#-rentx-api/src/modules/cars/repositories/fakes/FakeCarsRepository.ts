@@ -29,6 +29,32 @@ class FakeCarsRepository implements ICarsRepository {
 
     return car;
   }
+
+  async findAllAvailable(
+    category_id?: string,
+    brand?: string,
+    name?: string,
+  ): Promise<Car[]> {
+    if (category_id || brand || name) {
+      const filtredCards = this.cars.filter(car => {
+        if (
+          car.available &&
+          ((brand && car.brand === brand) ||
+            (name && car.name === name) ||
+            (category_id && car.category_id === category_id))
+        ) {
+          return car;
+        }
+        return null;
+      });
+
+      return filtredCards;
+    }
+
+    const availableCars = this.cars.filter(car => car.available);
+
+    return availableCars;
+  }
 }
 
 export { FakeCarsRepository };
