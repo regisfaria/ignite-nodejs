@@ -1,14 +1,12 @@
-import { createConnection, getConnectionOptions } from 'typeorm';
+import { createConnection, getConnectionOptions, Connection } from 'typeorm';
 
-interface IOptions {
-  host: string;
-}
+// 'host' default value must be EXACTLY as the Database container
+export default async (host = 'postgres_ignite'): Promise<Connection> => {
+  const defaultOptions = await getConnectionOptions();
 
-getConnectionOptions().then(options => {
-  const newOptions = options as IOptions;
-  // Below must be EXACTLY as the Database container
-  newOptions.host = 'postgres_ignite';
-  createConnection({
-    ...options,
-  });
-});
+  return createConnection(
+    Object.assign(defaultOptions, {
+      host,
+    }),
+  );
+};
