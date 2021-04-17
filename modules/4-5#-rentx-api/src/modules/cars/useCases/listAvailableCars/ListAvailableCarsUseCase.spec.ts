@@ -3,17 +3,17 @@ import { FakeCarsRepository } from '@modules/cars/repositories/fakes/FakeCarsRep
 import { ListAvailableCarsUseCase } from './ListAvailableCarsUseCase';
 
 let listAvailableCarsUseCase: ListAvailableCarsUseCase;
-let fakeCarsRepostory: FakeCarsRepository;
+let fakeCarsRepository: FakeCarsRepository;
 
 describe('ListAvailableCars', () => {
   beforeEach(() => {
-    fakeCarsRepostory = new FakeCarsRepository();
+    fakeCarsRepository = new FakeCarsRepository();
 
-    listAvailableCarsUseCase = new ListAvailableCarsUseCase(fakeCarsRepostory);
+    listAvailableCarsUseCase = new ListAvailableCarsUseCase(fakeCarsRepository);
   });
 
   it('should be able to list all available cars', async () => {
-    const expectedCar = await fakeCarsRepostory.create({
+    const expectedCar = await fakeCarsRepository.create({
       name: 'Example car',
       description: 'Example description',
       daily_rate: 14.0,
@@ -29,7 +29,7 @@ describe('ListAvailableCars', () => {
   });
 
   it('should be able to list all available cars by name', async () => {
-    const expectedCar = await fakeCarsRepostory.create({
+    const expectedCar = await fakeCarsRepository.create({
       name: 'Example car',
       description: 'Example description',
       daily_rate: 14.0,
@@ -39,7 +39,7 @@ describe('ListAvailableCars', () => {
       category_id: 'be22c9d2-55ec-4581-93ca-bdff6f576ff7',
     });
 
-    await fakeCarsRepostory.create({
+    await fakeCarsRepository.create({
       name: 'Another example car',
       description: 'Example description',
       daily_rate: 14.0,
@@ -57,7 +57,7 @@ describe('ListAvailableCars', () => {
   });
 
   it('should be able to list all available cars by brand', async () => {
-    const expectedCar = await fakeCarsRepostory.create({
+    const expectedCar = await fakeCarsRepository.create({
       name: 'Example car',
       description: 'Example description',
       daily_rate: 14.0,
@@ -67,7 +67,7 @@ describe('ListAvailableCars', () => {
       category_id: 'be22c9d2-55ec-4581-93ca-bdff6f576ff7',
     });
 
-    await fakeCarsRepostory.create({
+    await fakeCarsRepository.create({
       name: 'Another example car',
       description: 'Example description',
       daily_rate: 14.0,
@@ -85,7 +85,7 @@ describe('ListAvailableCars', () => {
   });
 
   it('should be able to list all available cars by category', async () => {
-    const expectedCar = await fakeCarsRepostory.create({
+    const expectedCar = await fakeCarsRepository.create({
       name: 'Example car',
       description: 'Example description',
       daily_rate: 14.0,
@@ -95,7 +95,7 @@ describe('ListAvailableCars', () => {
       category_id: 'be22c9d2-55ec-4581-93ca-bdff6f576ff7',
     });
 
-    await fakeCarsRepostory.create({
+    await fakeCarsRepository.create({
       name: 'Another example car',
       description: 'Example description',
       daily_rate: 14.0,

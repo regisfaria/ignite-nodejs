@@ -22,6 +22,18 @@ class FakeCarsRepository implements ICarsRepository {
     return car;
   }
 
+  async update(car: Car): Promise<void> {
+    const carIndex = this.cars.findIndex(carToFind => carToFind.id === car.id);
+
+    this.cars[carIndex] = car;
+  }
+
+  async findById(id: string): Promise<Car> {
+    const car = this.cars.find(carToFind => carToFind.id === id);
+
+    return car;
+  }
+
   async findByLicensePlate(license_plate: string): Promise<Car> {
     const car = this.cars.find(
       carToFind => carToFind.license_plate === license_plate,
