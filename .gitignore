@@ -6,3 +6,6 @@ modules/4-5#-rentx-api/ormconfig.json
 modules/4-5#-rentx-api/tmp/avatars/*.png
 modules/4-5#-rentx-api/tmp/avatars/*.jpg
 modules/4-5#-rentx-api/tmp/avatars/*.jpeg
+modules/4-5#-rentx-api/tmp/cars/*.png
+modules/4-5#-rentx-api/tmp/cars/*.jpg
+modules/4-5#-rentx-api/tmp/cars/*.jpeg
