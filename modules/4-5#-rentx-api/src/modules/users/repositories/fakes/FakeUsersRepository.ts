@@ -7,12 +7,14 @@ import { IUsersRepository } from '../IUsersRepository';
 class FakeUsersRepository implements IUsersRepository {
   users: User[] = [];
 
-  async create(data: ICreateUserDTO): Promise<void> {
+  async create(data: ICreateUserDTO): Promise<User> {
     const user = new User();
 
     Object.assign(user, { id: uuid(), ...data });
 
     this.users.push(user);
+
+    return user;
   }
 
   async update(user: User): Promise<void> {

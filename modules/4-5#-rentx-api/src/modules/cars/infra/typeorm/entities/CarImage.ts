@@ -14,7 +14,7 @@ class CarImage {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column('uuid')
   car_id: string;
 
   @ManyToOne(() => Car, car => car.images)
