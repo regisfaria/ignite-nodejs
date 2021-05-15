@@ -9,11 +9,11 @@ interface IParams {
 }
 
 /**
- * Returns the difference in hours between two dates.
+ * Returns the difference in days between two dates.
  *
  * If no "dateToCompare" is given, it will use the current date
  */
-function getDifferenceInHoursBetweenDates({
+function getDifferenceInDaysBetweenDates({
   date,
   dateToCompare = new Date(),
 }: IParams): number {
@@ -21,12 +21,12 @@ function getDifferenceInHoursBetweenDates({
 
   const formattedDateToCompare = dayjs(dateToCompare).utc().local().format();
 
-  const differenceInHours = dayjs(formattedDate).diff(
+  const differenceInDays = dayjs(formattedDate).diff(
     formattedDateToCompare,
-    'hours',
+    'days',
   );
 
-  return differenceInHours;
+  return differenceInDays;
 }
 
-export default getDifferenceInHoursBetweenDates;
+export default getDifferenceInDaysBetweenDates;

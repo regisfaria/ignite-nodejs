@@ -55,6 +55,38 @@ describe('CreateRental', () => {
     expect(rental).toHaveProperty('start_date');
   });
 
+  it('should be able to set car availability to "false" when a rental is created', async () => {
+    const user = await fakeUsersRepository.create({
+      driver_license: 'TEST-LICENSE',
+      email: 'johndoe@email.com',
+      name: 'John Doe',
+      password: '123456',
+    });
+
+    const car = await fakeCarsRepository.create({
+      brand: 'Test',
+      category_id: 'test-category-id',
+      daily_rate: 12.0,
+      description: "It's a test car entry",
+      fine_amount: 1000.0,
+      license_plate: 'TST001',
+      name: 'Test Car',
+    });
+
+    const rental = await createRentalUseCase.execute({
+      car_id: car.id,
+      user_id: user.id,
+      expected_return_date,
+    });
+
+    const rentedCar = await fakeCarsRepository.findByLicensePlate('TST001');
+
+    expect(rental).toHaveProperty('id');
+    expect(rental).toHaveProperty('start_date');
+
+    expect(rentedCar.available).toBe(false);
+  });
+
   it('should not be able to create a rental for a non-existing user', async () => {
     const car = await fakeCarsRepository.create({
       brand: 'Test',

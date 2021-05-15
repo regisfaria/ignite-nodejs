@@ -27,6 +27,20 @@ class FakeRentalsRepository implements IRentalsRepository {
     return rental;
   }
 
+  async update(rental: Rental): Promise<void> {
+    const rentalIndex = this.rentals.findIndex(
+      rentalToFind => rentalToFind.id === rental.id,
+    );
+
+    this.rentals[rentalIndex] = rental;
+  }
+
+  async findById(id: string): Promise<Rental> {
+    const rental = this.rentals.find(rentalToFind => rentalToFind.id === id);
+
+    return rental;
+  }
+
   async findOpenRentalByCarId(car_id: string): Promise<Rental> {
     const openRental = this.rentals.find(
       rental => rental.car_id === car_id && !rental.end_date,

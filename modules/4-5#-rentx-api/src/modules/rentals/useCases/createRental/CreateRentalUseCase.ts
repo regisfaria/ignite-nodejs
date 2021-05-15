@@ -13,7 +13,7 @@ interface IRequest {
   expected_return_date: Date;
 }
 
-const minimumRentalHours = 24;
+const minimumRentalHours = Number(process.env.MINIMUM_RENTAL_HOURS);
 
 @injectable()
 class CreateRentalUseCase {
@@ -74,6 +74,10 @@ class CreateRentalUseCase {
       car_id,
       expected_return_date,
     });
+
+    carExists.available = false;
+
+    await this.carsRepository.update(carExists);
 
     return rental;
   }
