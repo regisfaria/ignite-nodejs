@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { FakeCarsRepository } from '@modules/cars/repositories/fakes/FakeCarsRepository';
 import { FakeRentalsRepository } from '@modules/rentals/repositories/fakes/FakeRentalsRepository';
 import { FakeUsersRepository } from '@modules/users/repositories/fakes/FakeUsersRepository';

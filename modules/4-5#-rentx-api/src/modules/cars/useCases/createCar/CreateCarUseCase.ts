@@ -39,9 +39,7 @@ class CreateCarUseCase {
     );
 
     if (!categoryExists) {
-      throw new AppError(
-        'Looks like this category dont exists. Create it first. ',
-      );
+      throw new AppError('Category does not exists');
     }
 
     const carAlreadyExists = await this.carsRepository.findByLicensePlate(

@@ -24,7 +24,7 @@ class UploadCarImagesUseCase {
     const carExists = await this.carsRepository.findById(car_id);
 
     if (!carExists) {
-      throw new AppError('No car registred with given ID');
+      throw new AppError('No car registered with given ID');
     }
 
     const imagesUploaded = await Promise.all(
