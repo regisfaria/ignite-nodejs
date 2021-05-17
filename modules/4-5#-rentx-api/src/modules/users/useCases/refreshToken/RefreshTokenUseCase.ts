@@ -28,7 +28,7 @@ class RefreshTokenUseCase {
 
     const userId = sub;
 
-    const userToken = await this.usersTokensRepository.findByUserIdAndRefreshToken(
+    const userToken = await this.usersTokensRepository.findByUserIdAndToken(
       userId,
       token,
     );
@@ -47,7 +47,7 @@ class RefreshTokenUseCase {
     const expiresAt = getDateAddedByDays(expiresInRefreshTokenDays);
 
     await this.usersTokensRepository.create({
-      refresh_token: refreshToken,
+      token: refreshToken,
       user_id: userId,
       expires_at: expiresAt,
     });

@@ -70,7 +70,7 @@ class AuthenticateUserUseCase {
     await this.usersTokensRepository.create({
       expires_at: expiresAt,
       user_id: user.id,
-      refresh_token: refreshToken,
+      token: refreshToken,
     });
 
     return {

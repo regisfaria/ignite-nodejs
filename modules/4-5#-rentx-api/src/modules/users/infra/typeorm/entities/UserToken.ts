@@ -15,7 +15,7 @@ class UserToken {
   id: string;
 
   @Column()
-  refresh_token: string;
+  token: string;
 
   @Column()
   user_id: string;

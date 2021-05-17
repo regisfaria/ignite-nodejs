@@ -14,12 +14,12 @@ export class CreateUserTokenTable1621206767646 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'refresh_token',
-            type: 'varchar',
-          },
-          {
             name: 'user_id',
             type: 'uuid',
+          },
+          {
+            name: 'token',
+            type: 'varchar',
           },
           {
             name: 'expires_at',
