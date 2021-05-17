@@ -22,12 +22,23 @@ export async function ensureAuthenticated(
   const [, token] = authHeader.split(' ');
 
   try {
-    const { sub: userId } = verify(token, authConfig.secret) as IPayload;
+    const { sub: userId } = verify(token, authConfig.secretToken) as IPayload;
 
     request.user = { id: userId };
 
     next();
-  } catch (error) {
-    throw new AppError('Invalid token', 401);
+  } catch (invalidToken) {
+    try {
+      const { sub: userId } = verify(
+        token,
+        authConfig.secretRefreshToken,
+      ) as IPayload;
+
+      request.user = { id: userId };
+
+      next();
+    } catch (error) {
+      throw new AppError('Invalid Token or Refresh Token', 401);
+    }
   }
 }
