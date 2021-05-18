@@ -11,3 +11,4 @@ modules/4-5#-rentx-api/tmp/cars/*.jpg
 modules/4-5#-rentx-api/tmp/cars/*.jpeg
 modules/4-5#-rentx-api/.vscode/
 modules/4-5#-rentx-api/.env
+modules/4-5#-rentx-api/coverage/

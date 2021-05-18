@@ -1,3 +1,4 @@
+import { FakeUsersTokensRepository } from '@modules/users/repositories/fakes/FakeUsersTokensRepository';
 import { AppError } from '@shared/errors/AppError';
 
 import { ICreateUserDTO } from '../../dtos/ICreateUserDTO';
@@ -8,12 +9,18 @@ import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
 let authenticateUserUseCase: AuthenticateUserUseCase;
 let createUserUseCase: CreateUserUseCase;
 let fakeUsersRepository: FakeUsersRepository;
+let fakeUsersTokensRepository: FakeUsersTokensRepository;
 
 describe('Authenticate User', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository();
     createUserUseCase = new CreateUserUseCase(fakeUsersRepository);
-    authenticateUserUseCase = new AuthenticateUserUseCase(fakeUsersRepository);
+    fakeUsersTokensRepository = new FakeUsersTokensRepository();
+
+    authenticateUserUseCase = new AuthenticateUserUseCase(
+      fakeUsersRepository,
+      fakeUsersTokensRepository,
+    );
   });
 
   it('should be able to authenticate an user', async () => {
